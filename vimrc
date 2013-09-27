@@ -1,5 +1,17 @@
 filetype plugin indent on
-"autocmd BufNewFile,BufReadPre *.tex source ~/.vim/tex.vim
+
+autocmd FileType plaintex call SetPlaintexOptions()
+
+"plaintex options
+function SetPlaintexOptions()
+	"surround with paragraph
+	nnoremap <leader>p :s/\v.*/\\paragraph{\0}<cr>:nohlsearch<cr>
+
+	"quick compile latex to 'out' folder
+	nnoremap <leader>c :!compile-latex.sh %<cr>
+endfunction
+
+
 autocmd BufRead,BufNewFile   *.tex set ft=plaintex
 
 " shifts local vim directory to directory of newly buffer
@@ -104,13 +116,6 @@ nnoremap <leader>e 0:s/\v.+/\\begin{enum}{\0}<cr>:/^$/;\/s/\v.+/\t\\item<space>\
 "/^$/;\/g/^$/normal dd
 "prepend item tags
 "/^$/;\/s/\v.+/\t\\item \0
-
-"surround with paragraph
-nnoremap <leader>p :s/\v.*/\\paragraph{\0}<cr>:nohlsearch<cr>
-
-"quick compile latex to 'out' folder
-nnoremap <leader>c :!compile-latex.sh %<cr>
-
 
 " eclim bindings
 nnoremap <c-O> :JavaImportMissing<cr>:JavaImportClean<cr>:JavaImportSort<cr>
