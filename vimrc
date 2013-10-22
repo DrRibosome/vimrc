@@ -1,6 +1,7 @@
 filetype plugin indent on
 
 autocmd FileType plaintex call SetPlaintexOptions()
+autocmd FileType r call SetROptions()
 
 "plaintex options
 function! SetPlaintexOptions()
@@ -28,6 +29,21 @@ function! SetPlaintexOptions()
 	" file there must be at least 2 blank lines
 	nnoremap <buffer> <leader>e 0:s/\v.+/\\begin{enum}{\0}<cr>:/^$/;\/s/\v.+/\t\\item<space>\0<cr>'':.;/^$/g/^$/normal dd<cr>O\end{enum}<esc>:nohlsearch<cr>o<esc>
 
+	"auto fold paragraphs
+"	setlocal foldmethod=expr
+"	setlocal foldexpr=GetTexFold(v:lnum)
+"	function! GetTexFold(lnum)
+"		if getline(a:lnum) =~# "\v\\paragraph\.*$"
+"			return 0
+"		fi
+"		return 1
+"	endfunction
+
+endfunction
+
+function! SetROptions()
+"	let fileName = expand("%:p")
+"	call system("R --file=\"".fileName."\"")
 endfunction
 
 function! SetEclimOptions()
