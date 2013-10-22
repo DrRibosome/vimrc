@@ -1,5 +1,6 @@
 filetype plugin indent on
 
+autocmd BufRead,BufNewFile *.tex set ft=plaintex
 autocmd FileType plaintex call SetPlaintexOptions()
 autocmd FileType r call SetROptions()
 
@@ -74,7 +75,6 @@ endfunction
 
 
 
-autocmd BufRead,BufNewFile   *.tex set ft=plaintex
 
 " shifts local vim directory to directory of newly buffer
 autocmd BufEnter * :cd %:p:h
