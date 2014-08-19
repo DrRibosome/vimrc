@@ -104,6 +104,12 @@ set laststatus=2
 set history=1000
 syntax on
 
+"colorscheme setup
+set background=dark
+colorscheme solarized
+"to fix colors while in tmux
+set term=screen-256color
+
 "set wildmenu
 "set wildmode=list:longest,full
 
@@ -161,3 +167,16 @@ inoremap {<CR>  {<CR>}<Esc>O
 "prepend item tags
 "/^$/;\/s/\v.+/\t\\item \0
 
+" ------ movement remaps -----------------
+nnoremap <C-n> <Left>
+nnoremap <C-e> <Down>
+nnoremap <C-i> <Up>
+nnoremap <C-o> <Right>
+vnoremap <C-n> <Left>
+vnoremap <C-e> <Down>
+vnoremap <C-i> <Up>
+vnoremap <C-o> <Right>
+inoremap <C-n> <Left>
+inoremap <C-e> <Down>
+inoremap <C-i> <Up>
+inoremap <C-o> <Right>
